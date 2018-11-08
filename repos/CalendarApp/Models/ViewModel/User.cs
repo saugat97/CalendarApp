@@ -20,7 +20,7 @@ namespace CalendarApp.Models
 
         [Display(Name = "Email address")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Your email address is required")]
-        [DataType(DataType.EmailAddress)]
+        //[DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required for registration")]

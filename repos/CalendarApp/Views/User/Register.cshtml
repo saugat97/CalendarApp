@@ -1,72 +1,66 @@
 ﻿@model CalendarApp.Models.User
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
 
 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
 {
     if (ViewBag.Message != null)
-    {
-        <div class="alert alert-success">
-            <strong>Registration Successful</strong>@ViewBag.Message
-        </div>
-    }
+        
+    {<br /><br /><br /><div class="wrapper" style="margin-bottom:20%; margin-top:1%;">
+    <div class="alert alert-success" style=" margin-bottom:30%; margin-left:1%; margin-right:1%; font-family:'Century Gothic'";>
+        <strong>Registration Successful</strong>@ViewBag.Message
+    </div>
+</div>}
+    
 }
 else
 {
     using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        <style>
+            .text {
+                font-family: 'Berlin Sans FB';
+                font-size: 17px;
+            }
+        </style>
+        <div class="wrapper-reg" style="padding:5%">
+            <div class="register">
+                <div>
+                    <img src="http://www.bio-derm.org/dosyalar/avatar/user.png" alt="user" class="user">
+                </div><br />
+                <div align="center">
+                    @Html.ValidationSummary(true, "")
+                    <div class="text">First Name </div>
+                    @Html.EditorFor(model => model.FirstName)
+                    @Html.ValidationMessageFor(model => model.FirstName)
                 </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                <div align="center">
+                    <div class="text">Last Name </div>
+                    @Html.EditorFor(model => model.LastName)
+                    @Html.ValidationMessageFor(model => model.LastName)
                 </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                <div align="center">
+                    <div class="text">Email </div>
+                    @Html.ValidationMessageFor(model => model.Email)
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessage("EmailExist")
                 </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <div align="center">
+                    <div class="text">Password </div>
+                    @Html.EditorFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
                 </div>
-            </div>
+                <div align="center">
+                    <div class="text">Confirm Password </div>
+                    @Html.EditorFor(model => model.ConfirmPassword)
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </div><br />
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                <button type="submit" class="button">Register</button>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-
+            </div> <!-- main login -->
+        </div> <!-- wrapper close -->
+        @*@Html.ActionLink("Register", "Register", "User")*@
         if (ViewBag.Message != null)
         {
             <div class="alert alert-danger">
@@ -76,9 +70,6 @@ else
     }
 
 }
-
-
-
 @section Scripts{
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

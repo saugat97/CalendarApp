@@ -3,58 +3,55 @@
 @{
     ViewBag.Title = "Login";
 }
-
-<h2>Login</h2>
-
-
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<style>
+    .text {
+        font-family: 'Berlin Sans FB';
+        font-size: 17px;
+    }
+</style>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    <div class="wrapper">
+        <div class="login">
+            <div>
+                <img src="https://lh3.googleusercontent.com/GBZnbt8ViRyar29bVp6jTSX0hY-WYPyecsbye9dDGJKPGg4Jfl83HOOapaQavuC2tzR8lk4=s170" class="logo"
+                     style="height: 50px; display: block;   margin-left: auto;   margin-right: auto; margin-top:5%"> <br>
+            </div>
+            <div align="center">
+                @Html.ValidationSummary(true, "")
+                <div class="text">Email </div>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email, "")
+            </div>
+            <div align="center">
+                <div class="text">Password</div>
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div><br />
+            <div style="text-align: center;">
+                @Html.EditorFor(model => model.RememberMe)
+                @Html.ValidationMessageFor(model => model.RememberMe, "")Remember Me
+            </div><br />
+            <div>
+                <button class="button">Log in</button><br />
+                <button class="button">
+                    @Html.ActionLink("Register", "Register", "User")
+                </button>
             </div>
         </div>
+    </div> <!-- wrapper close -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.RememberMe)
-                    @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
-
-<div>
-    @Html.ActionLink("Register", "Register", "User")
-</div>
-
 @section Scripts{
-
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script type="text/javascript">
+        $('.logo').tilt({
+            glare: true,
+            maxglare: .5
+        });
+    </script>
 }

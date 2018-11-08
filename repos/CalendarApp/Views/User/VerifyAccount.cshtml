@@ -1,18 +1,27 @@
 ﻿@{
     ViewBag.Title = "VerifyAccount";
-}
+}<style>
+    body {
+        height: 100vh;
+        background: url("https://d3tvpxjako9ywy.cloudfront.net/blog/content/uploads/2017/05/rawpixel-633847-unsplash.jpg?av=41bdb562b6f666d8810a5caebca706da") 50% fixed;
+        background-size: cover;
+    }
+</style>
+<br /><br /><br />
+            
+                <h2 style="font-family:'Century Gothic';">VerifyAccount</h2>
+            
 
-<h2>VerifyAccount</h2>
-
-@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
-{
-    <div class="alert alert-success">
-        <strong>Verified Successfully.</strong> Click here to @Html.ActionLink("Login", "Login", "User")
-    </div>
+                @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+            <div class="alert alert-success" style=" margin-bottom:50%; margin-left:1%; margin-right:1%; font-family:'Century Gothic'" ;>
+                <strong>Verified Successfully.</strong> Click here to @Html.ActionLink("Login", "Login", "User")
+            </div>
 }
 else
 {
-    <div class="alert alert-success">
-        <strong>Error Verification!</strong> @ViewBag.Message
-    </div>
+            <div class="alert alert-success" style="font-family:'Century Gothic'">
+                <strong>Error Verification!</strong> @ViewBag.Message
+            </div>
 }
+            
