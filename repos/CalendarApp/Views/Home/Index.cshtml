@@ -168,9 +168,9 @@ Welcome @HttpContext.Current.User.Identity.Name
                         selectedEvent = calEvent;
                         $('#myModal #eventTitle').text(calEvent.title);
                         var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("MMM-DD-YYYY HH:mm a")));
+                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
                         if (calEvent.end != null) {
-                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("MMM-DD-YYYY HH:mm a")));
+                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
                         }
                         $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
                         $('#myModal #pDetails').empty().html($description);
@@ -192,18 +192,7 @@ Welcome @HttpContext.Current.User.Identity.Name
                         $('#calendar').fullCalendar('unselect');
                     },
                     editable: true,
-                    eventDrop: function (event) {
-                        var data = {
-                            EventID: event.eventID,
-                            Subject: event.title,
-                            Start: event.start.format('MM/DD/YYYY HH:mm A'),
-                            End: event.end != null ? event.end.format('MM/DD/YYYY HH:mm A') : null,
-                            Description: event.description,
-                            ThemeColor: event.color,
-                            IsFullDay: event.allDay
-                        };
-                        SaveEvent(data);
-                    }
+                    
                 })
             }
 
