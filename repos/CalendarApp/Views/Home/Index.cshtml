@@ -3,8 +3,21 @@
     ViewBag.Title = "Index";
 }
 
-Welcome @HttpContext.Current.User.Identity.Name
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<style>
+    .text {
+        font-family: 'Berlin Sans FB';
+        font-size: 17px;
+    }
+    body {
+        background-image: url(https://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-040.jpg);
+    }
+</style>
+<br />
 
+Hello @HttpContext.Current.User.Identity.Name
+
+<br /><br />
 <div id="calender"></div>
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -42,7 +55,7 @@ Welcome @HttpContext.Current.User.Identity.Name
                     <input type="hidden" id="hdEventID" value="0" />
                     <div class="form-group">
                         <label>Subject</label>
-                        <input type="text" id="txtSubject" class="form-control" />
+                        <input type="text" id="txtSubject" class="form-control" style="font-family:'Century Gothic'" />
                     </div>
 
                     @*//js datetime picker*@
@@ -88,8 +101,8 @@ Welcome @HttpContext.Current.User.Identity.Name
                     <button type="button" id="btnSave" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
-             </div>
-           
+            </div>
+
         </div>
     </div>
 </div>
@@ -100,13 +113,13 @@ Welcome @HttpContext.Current.User.Identity.Name
 {
     using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
     {
-        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+        <a href="javascript:document.getElementById('logoutForm').submit()"><p style="color:black">Logout</p></a>
     }
 }
 
 <div id="Calendar"></div>
 
-@*//Required js and css file*@ 
+@*//Required js and css file*@
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
@@ -158,8 +171,7 @@ Welcome @HttpContext.Current.User.Identity.Name
                     timeFormat: 'h(:mm)a',
                     header: {
                         left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,basicWeek,basicDay,agenda'
+                        center: 'title'
                     },
                     eventLimit: true,
                     eventColor: '#378006',
@@ -192,7 +204,7 @@ Welcome @HttpContext.Current.User.Identity.Name
                         $('#calendar').fullCalendar('unselect');
                     },
                     editable: true,
-                    
+
                 })
             }
 
@@ -277,7 +289,7 @@ Welcome @HttpContext.Current.User.Identity.Name
                     IsFullDay: $('#chkIsFullDay').is(':checked')
                 }
                 SaveEvent(data);
-                // call function for submit data to the server 
+                // call function for submit data to the server
             })
             function SaveEvent(data) {
                 $.ajax({
